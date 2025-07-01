@@ -1,12 +1,13 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideHttpClient } from '@angular/common/http';
-import { countryReducer } from './store/coutries.reducer';
-import { CountryEffects } from './store/country.effect';
+import { countryReducer } from './store/countries.reducer';
+import { CountryEffects } from './store/countries.effect';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,5 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideEffects([CountryEffects]),
     provideStore({ countries: countryReducer }),
     provideHttpClient(),
-  ],
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })
+],
 };

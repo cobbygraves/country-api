@@ -1,0 +1,17 @@
+// Light Theme Variables
+$light-bg: #ffffff;
+$light-text: #2b3844;
+
+// Dark Theme Variables
+$dark-bg: #2b3844;
+$dark-text: #ffffff;
+
+$light-theme: (
+  bg: $light-bg,
+  text: $light-text,
+);
+
+$dark-theme: (
+  bg: $dark-bg,
+  text: $dark-text,
+);

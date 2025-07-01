@@ -9,7 +9,7 @@ import { AsyncPipe } from '@angular/common';
   selector: 'app-root',
   imports: [AsyncPipe],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   title = 'country-api';
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // Dispatch an action to load countries when the app initializes
+
     this.store.dispatch(loadCountries());
   }
 }

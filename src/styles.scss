@@ -1,0 +1,17 @@
+@use "styles/variables" as *;
+
+// Mixin to apply theme
+@mixin theme($theme-map) {
+  background-color: map-get($theme-map, $key: bg);
+  color: map-get($theme-map, $key: text);
+}
+
+// Light theme (default)
+body {
+  @include theme($light-theme);
+}
+
+// Dark theme (using a class on body or html)
+body.dark-mode {
+  @include theme($dark-theme);
+}

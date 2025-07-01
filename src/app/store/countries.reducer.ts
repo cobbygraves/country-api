@@ -11,9 +11,12 @@ const initialState: CountryState = {
 export const countryReducer = createReducer(
   initialState,
   on(loadCountries, (state) => ({ ...state, loading: true })),
-  on(loadCountriesSuccess, (state, { countries }) => ({
-    ...state,
-    countries,
-    loading: false,
-  }))
+  on(loadCountriesSuccess, (state, { countries }) => {
+    // console.log('Countries loaded:', countries);
+    return {
+      ...state,
+      countries,
+      loading: false,
+    };
+  })
 );

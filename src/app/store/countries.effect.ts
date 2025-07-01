@@ -14,7 +14,10 @@ export class CountryEffects {
       ofType(loadCountries),
       mergeMap(() =>
         this.countryService.getCountries().pipe(
-          map((countries) => loadCountriesSuccess({ countries })),
+          map((countries) => {
+            // console.log('Countries loaded:', countries);
+            return loadCountriesSuccess({ countries });
+          }),
           catchError((error) => {
             console.error('Error loading countries:', error);
             return [];
