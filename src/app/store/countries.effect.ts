@@ -12,12 +12,9 @@ export class CountryEffects {
   loadCountries$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadCountries),
-      mergeMap(() =>
+      switchMap(() =>
         this.countryService.getCountries().pipe(
-          map((countries) => {
-            // console.log('Countries loaded:', countries);
-            return loadCountriesSuccess({ countries });
-          }),
+          map((countries) => loadCountriesSuccess({ countries })),
           catchError((error) => {
             console.error('Error loading countries:', error);
             return [];

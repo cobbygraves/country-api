@@ -1,13 +1,19 @@
 export interface Country {
-  flag: string;
-  name: string;
+  flags: {
+    png: any;
+    svg: any;
+    alt: string;
+  };
+  name: {
+    common: string;
+    official: string;
+  };
   population: number;
   region: string;
-  capital: string;
+  capital: string[];
 }
 
 export interface CountryState {
   countries: Country[];
   loading: boolean;
-  // error: string | null;
 }
