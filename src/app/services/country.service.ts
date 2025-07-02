@@ -10,6 +10,12 @@ export class CountryService {
   constructor(private http: HttpClient) {}
 
   getCountries() {
-    return this.http.get<Country[]>(environment.apiUrl);
+    return this.http.get<Country[]>(
+      `${environment.apiUrl}/all?fields=name,flags,population,capital,region,cca3,borders`
+    );
+  }
+
+  getCountryByCode(code: string) {
+    return this.http.get<Country>(`${environment.apiUrl}/alpha/${code}`);
   }
 }

@@ -1,8 +1,12 @@
 .container {
-  display: grid;
+  min-height: 100vh;
+  background-color: var(--bg-color);
   margin-top: 50px;
-  grid-template-columns: 1fr; // 5 columns by default (large screens)
   padding: 20px;
+}
+.country-container {
+  display: grid;
+  grid-template-columns: 1fr; // 5 columns by default (large screens)
   gap: 40px;
 
   @media (min-width: 600px) {

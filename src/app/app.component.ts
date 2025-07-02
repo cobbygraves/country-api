@@ -11,10 +11,16 @@ import { AsyncPipe } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { Observable } from 'rxjs';
 import { CountryCardComponent } from './components/country-card/country-card.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [AsyncPipe, NavbarComponent, CountryCardComponent],
+  imports: [
+    AsyncPipe,
+    NavbarComponent,
+    CountryCardComponent,
+    SearchBarComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

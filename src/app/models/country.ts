@@ -1,19 +1,38 @@
 export interface Country {
   flags: {
-    png: any;
-    svg: any;
+    png: string;
+    svg: string;
     alt: string;
   };
   name: {
     common: string;
     official: string;
+    nativeName?: {
+      [key: string]: {
+        official: string;
+        common: string;
+      };
+    };
+  };
+  currencies?: {
+    [key: string]: {
+      name: string;
+      symbol: string;
+    };
+  };
+  languages: {
+    [key: string]: string;
   };
   population: number;
   region: string;
-  capital: string[];
+  subregion: string;
+  capital?: string[];
+  borders?: string[];
+  cca3: string;
 }
 
 export interface CountryState {
+  country?: Country;
   countries: Country[];
   loading: boolean;
 }
