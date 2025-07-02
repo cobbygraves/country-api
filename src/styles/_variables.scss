@@ -1,17 +1,21 @@
 // Light Theme Variables
-$light-bg: #ffffff;
-$light-text: #2b3844;
+$light-bg: #f2f2f2;
+$light-text: #202c36;
+$light-header-bg: #ffffff;
 
 // Dark Theme Variables
-$dark-bg: #2b3844;
-$dark-text: #ffffff;
+$dark-bg: #202c36;
+$dark-text: #f2f2f2;
+$dark-header-bg: #2c3e50;
 
 $light-theme: (
   bg: $light-bg,
+  header-bg: $light-header-bg,
   text: $light-text,
 );
 
 $dark-theme: (
   bg: $dark-bg,
   text: $dark-text,
+  header-bg: $dark-header-bg,
 );

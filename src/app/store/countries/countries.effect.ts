@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { CountryService } from '../services/country.service';
+import { CountryService } from '../../services/country.service';
 import { catchError, map, switchMap, mergeMap } from 'rxjs';
 import { loadCountries, loadCountriesSuccess } from './countries.actions';
 

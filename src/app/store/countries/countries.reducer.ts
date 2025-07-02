@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { loadCountries, loadCountriesSuccess } from './countries.actions';
-import { CountryState } from '../models/country';
+import { CountryState } from '../../models/country';
 
 const initialState: CountryState = {
   countries: [],

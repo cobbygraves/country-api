@@ -1,9 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 // import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { loadCountries } from './store/countries.actions';
-import { selectCountries, selectLoading } from './store/countries.selector';
-import { selectTheme } from './store/theme.selector';
+import { loadCountries } from './store/countries/countries.actions';
+import {
+  selectCountries,
+  selectLoading,
+} from './store/countries/countries.selector';
+import { selectTheme } from './store/theme/theme.selector';
 import { AsyncPipe } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { Observable } from 'rxjs';
@@ -30,8 +33,6 @@ export class AppComponent implements OnInit {
   loading$ = this.store.select(selectLoading);
 
   ngOnInit() {
-    // Dispatch an action to load countries when the app initializes
-
     this.store.dispatch(loadCountries());
   }
 }

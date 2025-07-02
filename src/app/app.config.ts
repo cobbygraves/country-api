@@ -9,10 +9,10 @@ import { routes } from './app.routes';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideHttpClient } from '@angular/common/http';
-import { countryReducer } from './store/countries.reducer';
-import { CountryEffects } from './store/countries.effect';
+import { countryReducer } from './store/countries/countries.reducer';
+import { CountryEffects } from './store/countries/countries.effect';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { themeReducer } from './store/theme.reducer';
+import { themeReducer } from './store/theme/theme.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
