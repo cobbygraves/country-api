@@ -6,18 +6,6 @@
   </div>
 
   }@else { @for(country of countries$ | async; track country.name) {
-
-  <div class="country-card">
-    <img [src]="country.flags.png" [alt]="country.flags.alt" />
-    <div class="country-info">
-      <h4>{{ country.name.common }}</h4>
-      <small><b>Population:</b> {{ country.population }}</small
-      ><br />
-      <small><b>Region: </b>{{ country.region }}</small
-      ><br />
-      <small><b>Capital: </b>{{ country.capital[0] }}</small>
-    </div>
-  </div>
-
+  <app-country-card [country]="country"></app-country-card>
   } }
 </section>

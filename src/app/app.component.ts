@@ -10,10 +10,11 @@ import { selectTheme } from './store/theme/theme.selector';
 import { AsyncPipe } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { Observable } from 'rxjs';
+import { CountryCardComponent } from './components/country-card/country-card.component';
 
 @Component({
   selector: 'app-root',
-  imports: [AsyncPipe, NavbarComponent],
+  imports: [AsyncPipe, NavbarComponent, CountryCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
