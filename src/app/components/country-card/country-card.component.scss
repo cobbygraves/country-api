@@ -2,6 +2,7 @@
   margin: 10px;
   border-radius: 5px;
   background-color: var(--card-bg);
+  cursor: pointer;
   .country-info {
     padding: 10px;
   }
@@ -13,8 +14,8 @@
       height: 125px;
     }
   }
-  h4 {
-    font-size: 1.2em;
+  h3 {
+    font-size: 1.3rem;
     margin-bottom: 10px;
   }
   p {
