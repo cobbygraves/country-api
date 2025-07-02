@@ -1,5 +1,6 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Country } from '../../models/country';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-country-card',
@@ -9,4 +10,9 @@ import { Country } from '../../models/country';
 })
 export class CountryCardComponent {
   @Input() country!: Country;
+  constructor(private router: Router) {}
+
+  onSelect(code: string) {
+    this.router.navigate(['country', code]);
+  }
 }

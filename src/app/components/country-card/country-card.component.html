@@ -1,4 +1,4 @@
-<div class="country-card">
+<div class="country-card" (click)="onSelect(country.cca3)">
   <img [src]="country.flags.png" [alt]="country.flags.alt" />
   <div class="country-info">
     <h3>{{ country.name.common }}</h3>

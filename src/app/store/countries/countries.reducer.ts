@@ -1,5 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadCountries, loadCountriesSuccess } from './countries.actions';
+import {
+  loadCountries,
+  loadCountriesSuccess,
+  loadCountrySuccess,
+  loadCountry,
+} from './countries.actions';
 import { CountryState } from '../../models/country';
 
 const initialState: CountryState = {
@@ -16,6 +21,19 @@ export const countryReducer = createReducer(
     return {
       ...state,
       countries,
+      loading: false,
+    };
+  }),
+  // on(loadCountry, (state) => {
+  //   return {
+  //     ...state,
+  //     loading: true,
+  //   };
+  // }),
+  on(loadCountrySuccess, (state, { country }) => {
+    return {
+      ...state,
+      country,
       loading: false,
     };
   })

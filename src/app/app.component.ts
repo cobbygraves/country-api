@@ -1,45 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
-// import { RouterOutlet } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { loadCountries } from './store/countries/countries.actions';
-import {
-  selectCountries,
-  selectLoading,
-} from './store/countries/countries.selector';
-import { selectTheme } from './store/theme/theme.selector';
-import { AsyncPipe } from '@angular/common';
+import { Component } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { Observable } from 'rxjs';
-import { CountryCardComponent } from './components/country-card/country-card.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    AsyncPipe,
-    NavbarComponent,
-    CountryCardComponent,
-    SearchBarComponent,
-  ],
+  imports: [NavbarComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
-  title = 'country-api';
-  themeToggle$!: Observable<boolean>;
-  private store = inject(Store);
-
-  constructor() {
-    this.themeToggle$ = this.store.select(selectTheme);
-    this.themeToggle$.subscribe((isDarkMode) => {
-      document.body.classList.toggle('dark-mode', isDarkMode);
-    });
-  }
-
-  countries$ = this.store.select(selectCountries);
-  loading$ = this.store.select(selectLoading);
-
-  ngOnInit() {
-    this.store.dispatch(loadCountries());
-  }
-}
+export class AppComponent {}

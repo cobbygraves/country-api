@@ -13,3 +13,8 @@ export const selectLoading = createSelector(
   selectCountriesState,
   (state: CountryState) => state.loading
 );
+
+export const selectCountry = createSelector(
+  selectCountriesState,
+  (state: CountryState) => state.country
+);
