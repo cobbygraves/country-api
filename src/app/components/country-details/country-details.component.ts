@@ -32,4 +32,8 @@ export class CountryDetailsComponent implements OnInit {
   goBack() {
     this.router.navigate(['/']);
   }
+
+  showBorderCountryDetails(border: string) {
+    this.router.navigate(['/country', border]);
+  }
 }

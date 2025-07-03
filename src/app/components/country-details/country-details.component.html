@@ -25,13 +25,14 @@
             <p><strong>Top Level Domain: </strong>{{ country.tld }}</p>
             <p>
               <strong>Currencies:</strong>
-              @for( currency of country.currencies | keyvalue; track currency){
+              @for( currency of country.currencies | keyvalue; track
+              currency.key){
               {{ currency.value.name }}
               }
             </p>
             <p>
               <strong>Languages:</strong> @for(lang of country.languages |
-              keyvalue; track lang){ {{ lang.value
+              keyvalue; track lang.key){ {{ lang.value
               }}<span *ngIf="!$last">, </span> }
             </p>
           </div>
@@ -39,7 +40,9 @@
             <p><strong>Border Countries:</strong></p>
             <div class="border-tags">
               @for(border of country.borders; track border) {
-              <span>{{ border }}</span>
+              <span (click)="showBorderCountryDetails(border)">{{
+                border
+              }}</span>
               }
             </div>
           </div>
@@ -49,13 +52,14 @@
           <p><strong>Top Level Domain: </strong>{{ country.tld }}</p>
           <p>
             <strong>Currencies:</strong>
-            @for( currency of country.currencies | keyvalue; track currency){
+            @for( currency of country.currencies | keyvalue; track
+            currency.key){
             {{ currency.value.name }}
             }
           </p>
           <p>
             <strong>Languages:</strong> @for(lang of country.languages |
-            keyvalue; track lang){ {{ lang.value
+            keyvalue; track lang.key){ {{ lang.value
             }}<span *ngIf="!$last">, </span> }
           </p>
         </div>
