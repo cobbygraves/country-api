@@ -2,6 +2,10 @@ import { createAction, props } from '@ngrx/store';
 import { Country } from '../../models/country';
 
 export const loadCountries = createAction('[Countries API] Load Countries');
+export const loadFilterCountries = createAction(
+  '[Countries API] Filter Countries',
+  props<{ countries: Country[] }>()
+);
 export const loadCountriesSuccess = createAction(
   '[Countries API] Load Countries Success',
   props<{ countries: Country[] }>()

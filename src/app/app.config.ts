@@ -13,13 +13,18 @@ import { countryReducer } from './store/countries/countries.reducer';
 import { CountryEffects } from './store/countries/countries.effect';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { themeReducer } from './store/theme/theme.reducer';
+import { UserReducer } from './store/user/user.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideEffects([CountryEffects]),
-    provideStore({ countries: countryReducer, theme: themeReducer }),
+    provideStore({
+      countries: countryReducer,
+      theme: themeReducer,
+      user: UserReducer,
+    }),
     provideHttpClient(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
   ],

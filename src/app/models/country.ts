@@ -34,5 +34,6 @@ export interface Country {
 export interface CountryState {
   country?: Country;
   countries: Country[];
+  filteredCountries?: Country[];
   loading: boolean;
 }

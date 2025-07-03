@@ -9,6 +9,11 @@ export const selectCountries = createSelector(
   (state: CountryState) => state.countries
 );
 
+export const selectFilteredCountries = createSelector(
+  selectCountriesState,
+  (state: CountryState) => state.filteredCountries
+);
+
 export const selectLoading = createSelector(
   selectCountriesState,
   (state: CountryState) => state.loading

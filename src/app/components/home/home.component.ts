@@ -4,13 +4,13 @@ import { loadCountries } from '../../store/countries/countries.actions';
 import {
   selectCountries,
   selectLoading,
+  selectFilteredCountries,
 } from '../../store/countries/countries.selector';
 import { selectTheme } from '../../store/theme/theme.selector';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { CountryCardComponent } from '../../components/country-card/country-card.component';
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  countries$ = this.store.select(selectCountries);
+  countries$ = this.store.select(selectFilteredCountries);
   loading$ = this.store.select(selectLoading);
 
   ngOnInit() {

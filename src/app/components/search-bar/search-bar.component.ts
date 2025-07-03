@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { searchCountry } from '../../store/user/user.actions';
+import { loadCountriesSuccess } from '../../store/countries/countries.actions';
+import { CountryService } from '../../services/country.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -6,4 +12,27 @@ import { Component } from '@angular/core';
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.scss',
 })
-export class SearchBarComponent {}
+export class SearchBarComponent implements OnInit, OnDestroy {
+  private inputSubject = new Subject<string>();
+  private destroy$ = new Subject<void>();
+
+  constructor(private store: Store, private countryservice: CountryService) {}
+
+  ngOnInit(): void {
+    this.inputSubject
+      .pipe(debounceTime(700), distinctUntilChanged(), takeUntil(this.destroy$))
+      .subscribe((query) => {
+        this.store.dispatch(searchCountry({ query }));
+      });
+  }
+
+  onInputChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.inputSubject.next(input.value);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+}

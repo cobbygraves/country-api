@@ -18,4 +18,8 @@ export class CountryService {
   getCountryByCode(code: string) {
     return this.http.get<Country>(`${environment.apiUrl}/alpha/${code}`);
   }
+
+  getCountriesBySearch(query: string) {
+
+  }
 }
