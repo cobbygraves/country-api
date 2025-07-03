@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: process.env['NG_APP_API_URL'],
+  apiUrl: 'https:/restcountries.com/v3.1',
   production: false,
 };
