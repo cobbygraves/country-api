@@ -1,0 +1,10 @@
+<nav class="navbar">
+  <h1 class="logo">Where in the world?</h1>
+  <button class="mode-toggle">
+    <i class="fa-solid fa-moon"></i>
+
+    <span class="label" (click)="toggleTheme()">
+      @if(this.themeToggle$ | async) { Dark Mode } @else { Light Mode }
+    </span>
+  </button>
+</nav>
