@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { CountryService } from '../../services/country.service';
-import { catchError, map, switchMap } from 'rxjs';
+import { catchError, map, switchMap, mergeMap } from 'rxjs';
 import {
   loadCountries,
   loadCountriesSuccess,
@@ -9,6 +9,7 @@ import {
   loadCountrySuccess,
 } from './countries.actions';
 import { ActivatedRoute } from '@angular/router';
+import { Country } from '../../models/country';
 
 @Injectable()
 export class CountryEffects {
@@ -34,9 +35,12 @@ export class CountryEffects {
   loadCountry$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadCountry),
-      switchMap((action) =>
+      mergeMap((action) =>
         this.countryService.getCountryByCode(action.id).pipe(
-          map((country) => loadCountrySuccess({ country })),
+          map((country) => {
+            // console.log(country);
+            return loadCountrySuccess({ country: country[0] });
+          }),
           catchError((error) => {
             console.error('Error loading countries:', error);
             return [];

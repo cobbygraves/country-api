@@ -14,6 +14,7 @@ export interface Country {
       };
     };
   };
+  tld?: string[];
   currencies?: {
     [key: string]: {
       name: string;
