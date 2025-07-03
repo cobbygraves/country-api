@@ -16,13 +16,16 @@
   <select
     id="region-filter"
     class="filter-dropdown"
+    name="region"
     aria-label="Filter by region"
+     [(ngModel)]="selectedRegion"
+    (change)="onRegionChange(selectedRegion)"
   >
-    <option value="" disabled selected>Filter by Region</option>
-    <option value="africa">Africa</option>
-    <option value="america">America</option>
-    <option value="asia">Asia</option>
-    <option value="europe">Europe</option>
-    <option value="oceania">Oceania</option>
+    <option value="" disabled>Filter by Region</option>
+    <option value="Africa">Africa</option>
+    <option value="America">America</option>
+    <option value="Asia">Asia</option>
+    <option value="Europe">Europe</option>
+    <option value="Oceania">Oceania</option>
   </select>
 </form>

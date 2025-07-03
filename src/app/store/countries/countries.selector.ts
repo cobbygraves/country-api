@@ -23,3 +23,8 @@ export const selectCountry = createSelector(
   selectCountriesState,
   (state: CountryState) => state.country
 );
+
+export const selectSelectedRegion = createSelector(
+  selectCountriesState,
+  (state) => state.selectedRegion
+);

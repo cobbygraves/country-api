@@ -18,3 +18,7 @@ export const loadCountry = createAction(
   '[Countries API] Load Country',
   props<{ id: string }>()
 );
+export const setSelectedRegion = createAction(
+  '[Countries API] Set Selected Region',
+  props<{ region: string }>()
+);
