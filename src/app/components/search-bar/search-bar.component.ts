@@ -3,8 +3,6 @@ import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { searchCountry } from '../../store/user/user.actions';
-import { loadCountriesSuccess } from '../../store/countries/countries.actions';
-import { CountryService } from '../../services/country.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -16,7 +14,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   private inputSubject = new Subject<string>();
   private destroy$ = new Subject<void>();
 
-  constructor(private store: Store, private countryservice: CountryService) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.inputSubject

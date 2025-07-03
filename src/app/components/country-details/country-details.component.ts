@@ -19,7 +19,7 @@ export class CountryDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    console.log('CountryDetailsComponent initialized');
+
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id')!;
       this.store.dispatch(loadCountry({ id: this.id }));

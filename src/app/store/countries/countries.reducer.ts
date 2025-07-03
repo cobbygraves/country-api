@@ -19,6 +19,11 @@ const initialState: CountryState = {
 export const countryReducer = createReducer(
   initialState,
   on(loadCountries, (state) => ({ ...state, loading: true })),
+  on(loadCountrySuccess, (state, { country }) => ({
+    ...state,
+    country,
+    loading: false,
+  })),
   on(loadCountriesSuccess, (state, { countries }) => {
     return {
       ...state,
@@ -40,6 +45,7 @@ export const countryReducer = createReducer(
       country.name.common.toLowerCase().includes(query.toLowerCase())
     ),
   }))
+
   // on(loadCountry, (state) => {
   //   return {
   //     ...state,
