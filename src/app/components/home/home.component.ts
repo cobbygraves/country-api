@@ -16,7 +16,7 @@ import { SearchBarComponent } from '../../components/search-bar/search-bar.compo
   selector: 'app-home',
   imports: [AsyncPipe, CountryCardComponent, SearchBarComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
   themeToggle$!: Observable<boolean>;

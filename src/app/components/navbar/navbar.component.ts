@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   selector: 'app-navbar',
   imports: [AsyncPipe],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+  styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
   public store = inject(Store);

@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-country-details',
   imports: [AsyncPipe, CommonModule],
   templateUrl: './country-details.component.html',
-  styleUrl: './country-details.component.scss',
+  styleUrl: './country-details.component.css',
 })
 export class CountryDetailsComponent implements OnInit {
   private store = inject(Store);

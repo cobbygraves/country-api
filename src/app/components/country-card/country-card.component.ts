@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   selector: 'app-country-card',
   imports: [],
   templateUrl: './country-card.component.html',
-  styleUrl: './country-card.component.scss',
+  styleUrl: './country-card.component.css',
 })
 export class CountryCardComponent {
   @Input() country!: Country;
