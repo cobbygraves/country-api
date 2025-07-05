@@ -15,3 +15,16 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.loading p {
+  text-align: center;
+}

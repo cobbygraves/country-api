@@ -5,6 +5,7 @@ import {
   loadSelectedCountrySuccess,
   loadFilterCountries,
   setFilterRegion,
+  loadCountryByCode,
 } from './countries.actions';
 import { CountryState } from '../../models/country';
 import { setSearchQuery } from '../user/user.actions';
@@ -15,7 +16,6 @@ const initialState: CountryState = {
   filteredCountries: [],
   loading: false,
   filterRegion: '',
-  error: null,
 };
 
 export const countryReducer = createReducer(
@@ -54,11 +54,11 @@ export const countryReducer = createReducer(
     filteredCountries: region
       ? state.countries.filter((country) => country.region === region)
       : state.countries,
-  }))
-  // on(loadCountry, (state) => {
-  //   return {
-  //     ...state,
-  //     loading: true,
-  //   };
-  // })
+  })),
+  on(loadCountryByCode, (state) => {
+    return {
+      ...state,
+      loading: true,
+    };
+  })
 );

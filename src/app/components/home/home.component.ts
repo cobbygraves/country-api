@@ -11,16 +11,29 @@ import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { CountryCardComponent } from '../../components/country-card/country-card.component';
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ErrorService } from '../../services/error.service';
+import { ErrorComponent } from '../error/error.component';
 
 @Component({
   selector: 'app-home',
-  imports: [AsyncPipe, CountryCardComponent, SearchBarComponent],
+  imports: [
+    AsyncPipe,
+    CountryCardComponent,
+    SearchBarComponent,
+    ProgressSpinnerModule,
+    ErrorComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
   themeToggle$!: Observable<boolean>;
   private store = inject(Store);
+  errorService = inject(ErrorService);
+
+  countries$ = this.store.select(filteredCountries);
+  loading$ = this.store.select(loading);
 
   constructor() {
     this.themeToggle$ = this.store.select(selectTheme);
@@ -28,9 +41,6 @@ export class HomeComponent implements OnInit {
       document.body.classList.toggle('dark-mode', isDarkMode);
     });
   }
-
-  countries$ = this.store.select(filteredCountries);
-  loading$ = this.store.select(loading);
 
   ngOnInit() {
     this.store.dispatch(loadCountries());

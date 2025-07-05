@@ -32,14 +32,15 @@ export interface Country {
   cca3: string;
 }
 
+export interface Error {
+  title?: string;
+  message?: string;
+}
+
 export interface CountryState {
   selectedCountry?: Country | null;
   countries: Country[];
   filterRegion: string;
   filteredCountries?: Country[];
   loading: boolean;
-  error: {
-    message?: string;
-    status?: number;
-  } | null;
 }

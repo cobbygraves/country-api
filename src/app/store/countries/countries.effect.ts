@@ -8,14 +8,13 @@ import {
   loadCountryByCode,
   loadSelectedCountrySuccess,
 } from './countries.actions';
-// import { ActivatedRoute } from '@angular/router';
-// import { Country } from '../../models/country';
+import { ErrorService } from '../../services/error.service';
 
 @Injectable()
 export class CountryEffects {
   private actions$ = inject(Actions);
   private countryService = inject(CountryService);
-  // private route = inject(ActivatedRoute);
+  private errorService = inject(ErrorService);
 
   loadCountries$ = createEffect(() =>
     this.actions$.pipe(
@@ -24,7 +23,10 @@ export class CountryEffects {
         this.countryService.getCountries().pipe(
           map((countries) => loadCountriesSuccess({ countries })),
           catchError((error) => {
-            console.error('Error loading countries:', error);
+            this.errorService.setError({
+              title: 'Network Error',
+              message: 'Error fetching countries..',
+            });
             return [];
           })
         )
@@ -42,7 +44,10 @@ export class CountryEffects {
             return loadSelectedCountrySuccess({ country: country[0] });
           }),
           catchError((error) => {
-            console.error('Error loading countries:', error);
+            this.errorService.setError({
+              title: 'Network Error',
+              message: 'Error fetching selecting country..',
+            });
             return [];
           })
         )

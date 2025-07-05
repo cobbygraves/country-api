@@ -18,10 +18,10 @@ export const loading = createSelector(
   (state: CountryState) => state.loading
 );
 
-export const error = createSelector(
-  countriesState,
-  (state: CountryState) => state.error
-);
+// export const error = createSelector(
+//   countriesState,
+//   (state: CountryState) => state.error
+// );
 
 export const country = createSelector(
   countriesState,

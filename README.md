@@ -1,59 +1,76 @@
-# CountryApi
+# PROJECT DOCUMENTATION
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
+## Project Description
 
-## Development server
+This is an Angular application that allows users to search, filter, and view detailed information about countries using the REST Countries API. The app features a responsive UI, theme switching (dark/light mode), and state management with NgRx.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## Setup & Run Instructions
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+1. **Clone the repository:**
 
-## Code scaffolding
+   git clone `https://github.com/cobbygraves/country-api`
+   cd country-api
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+2. **Install dependencies:**
 
-```bash
-ng generate component component-name
-```
+   npm install
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. **Run the application locally:**
 
-```bash
-ng generate --help
-```
+   npm start
 
-## Building
+   The app will be available at `http://localhost:4200`.
 
-To build the project run:
+4. **Run tests:**
 
-```bash
-ng build
-```
+   npm test
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Application Features
 
-## Running unit tests
+- **Search:** Find countries by name using the search bar.
+- **Filter:** Filter countries by region.
+- **Theme Switch:** Toggle between dark and light modes.
+- **Country Details:** View detailed information about a selected country, including population, region, capital, and borders.
+- **Error Handling:** User-friendly error messages for failed API requests.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Component Structure
 
-```bash
-ng test
-```
+- **NavbarComponent:** Displays the app title and theme switcher.
+- **SearchBarComponent:** Provides search and filter controls.
+- **CountryCardComponent:** Shows a summary card for each country.
+- **CountryDetailsComponent:** Displays detailed information for a selected country.
+- **HomeComponent:** Main landing page listing all countries.
+- **ErrorComponent:** Displays error messages.
 
-## Running end-to-end tests
+## Routing Overview
 
-For end-to-end (e2e) testing, run:
+- `/` - Home page listing all countries.
+- `/country/:code` - Country details page for the selected country.
+- `**` - Wildcard route for handling 404 errors.
 
-```bash
-ng e2e
-```
+Routes are configured in `app.routes.ts`.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## API Consumption
 
-## Additional Resources
+The application uses the [REST Countries API](https://restcountries.com/v3.1) to fetch country data. All API requests are managed through the `CountryService`, which handles searching, filtering, and retrieving country details.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## NgRx Store Implementation
+
+- **State:** The store manages countries, user preferences, and theme state.
+- **Actions:** Define events like loading countries, selecting a country, and toggling the theme.
+- **Reducers:** Update the state based on actions.
+- **Effects:** Handle side effects such as API calls and error handling.
+
+NgRx files are organized under `src/app/store/`.
+
+## Theme Switching Implementation
+
+Theme switching is managed via NgRx. The theme state is stored in the NgRx store, and actions are dispatched to toggle between dark and light modes. The UI updates automatically based on the current theme state.
+
+## Git Workflow
+
+- **Main Branch:** Stable, production-ready code.
+- **Feature Branches:** Each new feature or bugfix is developed in a separate branch (e.g., `feature/search-bar`).
+- **Pull Requests:** Changes are merged into `master` via pull requests after code review and testing.

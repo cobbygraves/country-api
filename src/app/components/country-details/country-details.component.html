@@ -9,7 +9,9 @@
     <section class="info-section">
       <!-- <h1 class="country-name">Belgium</h1> -->
       @if(loading$ | async; as loading) {
-      <p class="loading-message">Loading country details...</p>
+      <div class="card flex justify-center items-center">
+        <p-progress-spinner ariaLabel="loading" />
+      </div>
 
       }@else { @if(country$ | async; as country) {
       <div class="info-columns">
@@ -71,3 +73,7 @@
     </section>
   </div>
 </main>
+
+@if(errorService.error()){
+<app-error></app-error>
+}
