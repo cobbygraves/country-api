@@ -2,28 +2,28 @@ import { createReducer, on } from '@ngrx/store';
 import {
   loadCountries,
   loadCountriesSuccess,
-  loadCountrySuccess,
-  loadCountry,
+  loadSelectedCountrySuccess,
   loadFilterCountries,
-  setSelectedRegion,
+  setFilterRegion,
+  loadCountryByCode,
 } from './countries.actions';
 import { CountryState } from '../../models/country';
-import { searchCountry } from '../user/user.actions';
+import { setSearchQuery } from '../user/user.actions';
 
 const initialState: CountryState = {
   countries: [],
+  selectedCountry: null,
   filteredCountries: [],
   loading: false,
-  selectedRegion: '',
-  // error: null
+  filterRegion: '',
 };
 
 export const countryReducer = createReducer(
   initialState,
   on(loadCountries, (state) => ({ ...state, loading: true })),
-  on(loadCountrySuccess, (state, { country }) => ({
+  on(loadSelectedCountrySuccess, (state, { country }) => ({
     ...state,
-    country,
+    selectedCountry: country,
     loading: false,
   })),
   on(loadCountriesSuccess, (state, { countries }) => {
@@ -41,24 +41,24 @@ export const countryReducer = createReducer(
     };
   }),
 
-  on(searchCountry, (state, { query }) => ({
+  on(setSearchQuery, (state, { query }) => ({
     ...state,
     filteredCountries: state.countries.filter((country) =>
       country.name.common.toLowerCase().includes(query.toLowerCase())
     ),
   })),
 
-  on(setSelectedRegion, (state, { region }) => ({
+  on(setFilterRegion, (state, { region }) => ({
     ...state,
-    selectedRegion: region,
+    filterRegion: region,
     filteredCountries: region
       ? state.countries.filter((country) => country.region === region)
       : state.countries,
-  }))
-  // on(loadCountry, (state) => {
-  //   return {
-  //     ...state,
-  //     loading: true,
-  //   };
-  // })
+  })),
+  on(loadCountryByCode, (state) => {
+    return {
+      ...state,
+      loading: true,
+    };
+  })
 );

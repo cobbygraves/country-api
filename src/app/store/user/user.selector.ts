@@ -3,7 +3,7 @@ import { UserState } from '../../models/user';
 
 export const selectUserState = createFeatureSelector<UserState>('user');
 
-export const selectSearchQuery = createSelector(
+export const searchQuery = createSelector(
   selectUserState,
-  (state: UserState) => state.searchValue
+  (state: UserState) => state.searchQuery
 );

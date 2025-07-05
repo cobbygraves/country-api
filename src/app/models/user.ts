@@ -1,3 +1,3 @@
 export interface UserState {
-  searchValue: string;
+  searchQuery: string;
 }

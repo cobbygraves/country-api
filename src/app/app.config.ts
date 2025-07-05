@@ -14,6 +14,10 @@ import { CountryEffects } from './store/countries/countries.effect';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { themeReducer } from './store/theme/theme.reducer';
 import { UserReducer } from './store/user/user.reducer';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+// import Material from '@primeng/themes/material';
+import { MyPreset } from './themes/mytheme';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,5 +31,14 @@ export const appConfig: ApplicationConfig = {
     }),
     provideHttpClient(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: MyPreset,
+        options: {
+          darkModeSelector: '.dark-mode',
+        },
+      },
+    }),
   ],
 };
