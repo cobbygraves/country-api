@@ -1,13 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 // import { toggleTheme } from './theme.actions';
-import { searchCountry } from './user.actions';
+import { setSearchQuery } from './user.actions';
 import { UserState } from '../../models/user';
 
 const initialState: UserState = {
-  searchValue: '',
+  searchQuery: '',
 };
 
 export const UserReducer = createReducer(
   initialState,
-  on(searchCountry, (state, {query}) => ({ ...state, searchValue: query }))
+  on(setSearchQuery, (state, { query }) => ({ ...state, searchQuery: query }))
 );

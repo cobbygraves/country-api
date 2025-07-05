@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { searchCountry } from '../../store/user/user.actions';
-import { setSelectedRegion } from '../../store/countries/countries.actions';
-import { selectSelectedRegion } from '../../store/countries/countries.selector';
+import { setSearchQuery } from '../../store/user/user.actions';
+import { setFilterRegion } from '../../store/countries/countries.actions';
+import { filterRegion } from '../../store/countries/countries.selector';
 import { CountryService } from '../../services/country.service';
 import { FormsModule } from '@angular/forms';
 
@@ -24,7 +24,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Subscribe to selectedRegion from the store
     this.store
-      .select(selectSelectedRegion)
+      .select(filterRegion)
       .pipe(takeUntil(this.destroy$))
       .subscribe((region) => {
         this.selectedRegion = region || '';
@@ -33,7 +33,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     this.inputSubject
       .pipe(debounceTime(700), distinctUntilChanged(), takeUntil(this.destroy$))
       .subscribe((query) => {
-        this.store.dispatch(searchCountry({ query }));
+        this.store.dispatch(setSearchQuery({ query }));
       });
   }
 
@@ -43,7 +43,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   }
 
   onRegionChange(region: string): void {
-    this.store.dispatch(setSelectedRegion({ region }));
+    this.store.dispatch(setFilterRegion({ region }));
   }
 
   ngOnDestroy(): void {

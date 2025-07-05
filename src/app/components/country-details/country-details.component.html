@@ -8,30 +8,33 @@
 
     <section class="info-section">
       <!-- <h1 class="country-name">Belgium</h1> -->
-      @if(country$ | async; as country) {
+      @if(loading$ | async; as loading) {
+      <p class="loading-message">Loading country details...</p>
+
+      }@else { @if(country$ | async; as country) {
       <div class="info-columns">
         <section class="flag-section">
           <img src="{{ country.flags.png }}" alt="Flag of Belgium" />
         </section>
 
         <div class="column">
-          <h1 class="country-name">{{ country.name.common }}</h1>
-          <p><strong>Native Name: </strong>{{ country.name.common }}</p>
-          <p><strong>Population:</strong>{{ country.population }}</p>
-          <p><strong>Region:</strong> {{ country.region }}</p>
-          <p><strong>Sub Region: </strong>{{ country.subregion }}</p>
-          <p><strong>Capital: </strong>{{ country.capital }}</p>
+          <h1 class="country-name">{{ country?.name?.common }}</h1>
+          <p><strong>Native Name: </strong>{{ country?.name?.common }}</p>
+          <p><strong>Population:</strong>{{ country?.population }}</p>
+          <p><strong>Region:</strong> {{ country?.region }}</p>
+          <p><strong>Sub Region: </strong>{{ country?.subregion }}</p>
+          <p><strong>Capital: </strong>{{ country?.capital }}</p>
           <div class="column mobile-column">
-            <p><strong>Top Level Domain: </strong>{{ country.tld }}</p>
+            <p><strong>Top Level Domain: </strong>{{ country?.tld }}</p>
             <p>
               <strong>Currencies:</strong>
-              @for( currency of country.currencies | keyvalue; track
+              @for( currency of country?.currencies | keyvalue; track
               currency.key){
               {{ currency.value.name }}
               }
             </p>
             <p>
-              <strong>Languages:</strong> @for(lang of country.languages |
+              <strong>Languages:</strong> @for(lang of country?.languages |
               keyvalue; track lang.key){ {{ lang.value
               }}<span *ngIf="!$last">, </span> }
             </p>
@@ -39,7 +42,7 @@
           <div class="borders">
             <p><strong>Border Countries:</strong></p>
             <div class="border-tags">
-              @for(border of country.borders; track border) {
+              @for(border of country.borders; track $index) {
               <span (click)="showBorderCountryDetails(border)">{{
                 border
               }}</span>
@@ -64,7 +67,7 @@
           </p>
         </div>
       </div>
-      }
+      } }
     </section>
   </div>
 </main>

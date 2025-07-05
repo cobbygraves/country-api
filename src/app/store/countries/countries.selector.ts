@@ -1,30 +1,34 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CountryState } from '../../models/country';
 
-export const selectCountriesState =
-  createFeatureSelector<CountryState>('countries');
+export const countriesState = createFeatureSelector<CountryState>('countries');
 
-export const selectCountries = createSelector(
-  selectCountriesState,
+export const countries = createSelector(
+  countriesState,
   (state: CountryState) => state.countries
 );
 
-export const selectFilteredCountries = createSelector(
-  selectCountriesState,
+export const filteredCountries = createSelector(
+  countriesState,
   (state: CountryState) => state.filteredCountries
 );
 
-export const selectLoading = createSelector(
-  selectCountriesState,
+export const loading = createSelector(
+  countriesState,
   (state: CountryState) => state.loading
 );
 
-export const selectCountry = createSelector(
-  selectCountriesState,
-  (state: CountryState) => state.country
+export const error = createSelector(
+  countriesState,
+  (state: CountryState) => state.error
 );
 
-export const selectSelectedRegion = createSelector(
-  selectCountriesState,
-  (state) => state.selectedRegion
+export const country = createSelector(
+  countriesState,
+  (state: CountryState) => state.selectedCountry
+);
+
+export const filterRegion = createSelector(
+  countriesState,
+  (state) => state.filterRegion
 );

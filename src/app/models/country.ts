@@ -33,9 +33,13 @@ export interface Country {
 }
 
 export interface CountryState {
-  country?: Country;
+  selectedCountry?: Country | null;
   countries: Country[];
-  selectedRegion: string;
+  filterRegion: string;
   filteredCountries?: Country[];
   loading: boolean;
+  error: {
+    message?: string;
+    status?: number;
+  } | null;
 }

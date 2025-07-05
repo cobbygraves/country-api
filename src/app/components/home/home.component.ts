@@ -2,9 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loadCountries } from '../../store/countries/countries.actions';
 import {
-  selectCountries,
-  selectLoading,
-  selectFilteredCountries,
+  countries,
+  loading,
+  filteredCountries,
 } from '../../store/countries/countries.selector';
 import { selectTheme } from '../../store/theme/theme.selector';
 import { AsyncPipe } from '@angular/common';
@@ -29,8 +29,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  countries$ = this.store.select(selectFilteredCountries);
-  loading$ = this.store.select(selectLoading);
+  countries$ = this.store.select(filteredCountries);
+  loading$ = this.store.select(loading);
 
   ngOnInit() {
     this.store.dispatch(loadCountries());
