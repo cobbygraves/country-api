@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap");
 @import "tailwindcss";
 @plugin "tailwindcss-primeui";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,23 +11,18 @@
 
 /* Default (light) theme variables */
 :root {
-  --header-bg: #ffffff;
-  --card-bg: #ffffff;
-  --bg: #f8f9fa;
-  --text: #111517;
+  --background-header: #ffffff;
+  --background-card: #ffffff;
+  --background-main: #f8f9fa;
+  --foreground-main: #111517;
+  --border-card: #2DD4BF;
+  --font-main: "Nunito", sans-serif;
 }
 
 /* Dark theme variables */
 body.dark-mode {
-  --header-bg: #2b3945;
-  --card-bg: #2b3945;
-  --bg: #202c37;
-  --text: #ffffff;
-}
-
-/* Apply theme variables */
-body {
-  font-family: "Nunito", sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
+  --background-header: #2b3945;
+  --background-card: #2b3945;
+  --background-main: #202c37;
+  --foreground-main: #ffffff;
 }
