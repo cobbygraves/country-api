@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class CountryCardComponent {
   @Input() country!: Country;
   constructor(private router: Router) {}
-
+  themeMode = false;
   onSelect(code: string) {
     this.router.navigate(['country', code]);
   }
