@@ -3,7 +3,7 @@ import { toggleTheme } from './theme.actions';
 import { ThemeState } from '../../models/theme';
 
 const initialState: ThemeState = {
-  isDarkMode: false,
+  isDarkMode: true,
 };
 
 export const themeReducer = createReducer(
