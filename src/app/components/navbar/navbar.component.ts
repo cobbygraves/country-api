@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class NavbarComponent {
   public store = inject(Store);
-  // themeToggle$!: Observable<boolean>;
+
   themeMode = signal<boolean>(false);
 
   customSwitch = {
